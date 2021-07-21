@@ -29,6 +29,27 @@ class Tamagotchi {
         this.boredom = boredom
         this.age = age
     }
+    addHunger() {
+        let newHunger = this.hunger
+        setInterval(function () {
+            newHunger++
+            console.log(newHunger)
+        }, 60000)
+    }
+    addSleepiness() {
+        let newSleepiness = this.sleepiness
+        setInterval(function () {
+            newSleepiness++
+            console.log(newSleepiness)
+        }, 60000)
+    }
+    addBoredom() {
+        let newBoredom = this.boredom
+        setInterval(function () {
+            newBoredom++
+            console.log(newBoredom)
+        }, 60000)
+    }
     // three life stages? 
     addAge() {
         let newAge = this.age
@@ -55,7 +76,9 @@ function handlePlayClick() {
 const myPet = new Tamagotchi("Gato", "", "", "", 0)
 console.log(myPet)
 myPet.addAge()
-// myPet.hunger()
+myPet.addHunger()
+myPet.addSleepiness()
+myPet.addBoredom()
 
 // When the button is clicked, call the provided function.
 feedEl.addEventListener('click', handleFeedClick)
