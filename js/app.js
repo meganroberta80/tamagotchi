@@ -14,66 +14,111 @@
 // Increase your pet's Hunger, Sleepiness, and Bored metrics on an interval of your choosing.
 // You pet should die if Hunger, Boredom, or Sleepiness hits 10.
 
-const feedEl = document.getElementById('btn-feed')
-// lowers hunger
-const sleepEl = document.getElementById('btn-sleep')
-// lowers sleepiness
-const playEl = document.getElementById('btn-play')
-// lowers boredom
+// hunger
+let hungerMeter = document.getElementById('hunger-meter')
+let feedEl = document.getElementById('btn-feed')
+
+// sleepiness
+let sleepinessMeter = document.getElementById('sleepiness-meter')
+let sleepEl = document.getElementById('btn-sleep')
+
+// boredom
+let boredomMeter = document.getElementById('boredom-meter')
+let playEl = document.getElementById('btn-play')
+
+// notifications
+let notifications = document.getElementById('notifications')
+
+let count = 0
+
 
 class Tamagotchi {
     constructor(name, hunger, sleepiness, boredom, age) {
+        this.interval = null
         this.name = name
         this.hunger = hunger
         this.sleepiness = sleepiness
         this.boredom = boredom
         this.age = age
     }
-    addHunger() {
-        let newHunger = this.hunger
-        setInterval(function () {
-            newHunger++
-            console.log(newHunger)
-        }, 60000)
+
+    addHunger = () => {
+        this.interval = setInterval(() => {
+            this.hunger++
+            console.log("Hunger: " + this.hunger)
+            if (this.hunger >= 8) {
+                notifications.textContent = "I'm hungry. Feed me!"
+            }
+            if (this.hunger == 10) {
+                notifications.textContent = "Game over - Starved!"
+                clearInterval(this.interval)
+            }
+            updateDisplay()
+        }, 1000)
     }
+
     addSleepiness() {
-        let newSleepiness = this.sleepiness
-        setInterval(function () {
-            newSleepiness++
-            console.log(newSleepiness)
-        }, 60000)
+        this.interval = setInterval(() => {
+            this.sleepiness++
+            console.log("Sleepiness " + this.sleepiness)
+            if (this.sleepiness >= 8) {
+                notifications.textContent = "I'm tired. Time for a nap!"
+            }
+            if (this.sleepiness == 10) {
+                notifications.textContent = "Game over - Fainted!"
+                clearInterval(this.interval)
+            }
+            updateDisplay()
+        }, 1000)
     }
+
     addBoredom() {
-        let newBoredom = this.boredom
-        setInterval(function () {
-            newBoredom++
-            console.log(newBoredom)
-        }, 60000)
+        this.interval = setInterval(() => {
+            this.boredom++
+            console.log("Boredom: " + this.boredom)
+            if (this.boredom >= 8) {
+                notifications.textContent = "I'm bored. Let's play a game!"
+            }
+            if (this.boredom == 10) {
+                notifications.textContent = "Game over - Bored!"
+                clearInterval(this.interval)
+            }
+            updateDisplay()
+        }, 1000)
     }
+
     // three life stages? 
     addAge() {
         let newAge = this.age
         setInterval(function () {
             newAge++
-            console.log(newAge)
+            console.log("Age: " + myPet.age)
         }, 300000)
         // 5 minutes is 300000 ms
     }
 }
 
 function handleFeedClick() {
-//     hunger--
+    interval = setInterval()
+    myPet.hunger--
+    // Display the updated meter?
+    // let hungerMeterLive = hungerMeter.value 
+    hungerMeter.value = myPet.hunger
+    console.log(hungerMeter.value)
+    feedEl.textContent = 'Hunger: ' + myPet.hunger
 }
 
-function handleSleepClick() {
-//     sleepiness--
-}
+// function handleSleepClick() {
+//     // sleepiness--
+//     'Sleepiness: ' + sleepiness--
+// }
 
-function handlePlayClick() {
-//     boredom--
-}
+// function handlePlayClick() {
+//     // boredom--
+//     'Boredom: ' + boredom--
+// }
 
-const myPet = new Tamagotchi("Gato", "", "", "", 0)
+const myPet = new Tamagotchi("Gato", 0, 0, 0, 0)
 console.log(myPet)
 myPet.addAge()
 myPet.addHunger()
@@ -81,6 +126,23 @@ myPet.addSleepiness()
 myPet.addBoredom()
 
 // When the button is clicked, call the provided function.
-feedEl.addEventListener('click', handleFeedClick)
-sleepEl.addEventListener('click', handleSleepClick)
-playEl.addEventListener('click', handlePlayClick)
+feedEl.addEventListener('click', () => {
+    myPet.hunger--
+    updateDisplay()
+})
+
+sleepEl.addEventListener('click', () => {
+    myPet.sleepiness--
+    updateDisplay()
+})
+
+playEl.addEventListener('click', () => {
+    myPet.boredom--
+    updateDisplay()
+})
+
+function updateDisplay() {
+    hungerMeter.setAttribute("value", myPet.hunger)
+    sleepinessMeter.setAttribute("value", myPet.sleepiness)
+    boredomMeter.setAttribute("value", myPet.boredom)
+}
