@@ -84,7 +84,7 @@ class Tamagotchi {
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 10000)
+        }, 1000)
     }
 
     addAge() {
