@@ -50,11 +50,11 @@ class Tamagotchi {
                 notifications.textContent = "I'm hungry. Feed me!"
             }
             if (this.hunger == 10) {
-                notifications.textContent = "Game over - Starved!"
+                notifications.textContent = "Game over - Hangry!"
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 1000)
+        }, 10000)
     }
 
     addSleepiness() {
@@ -69,7 +69,7 @@ class Tamagotchi {
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 1000)
+        }, 10000)
     }
 
     addBoredom() {
@@ -84,10 +84,9 @@ class Tamagotchi {
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 1000)
+        }, 10000)
     }
 
-    // three life stages? 
     addAge() {
         let newAge = this.age
         setInterval(function () {
@@ -108,15 +107,20 @@ function handleFeedClick() {
     feedEl.textContent = 'Hunger: ' + myPet.hunger
 }
 
-// function handleSleepClick() {
-//     // sleepiness--
-//     'Sleepiness: ' + sleepiness--
-// }
+function handleSleepClick() {
+    interval = setInterval()
+    myPet.sleepiness--
+    sleepinessMeter.value = myPet.sleepiness
+    console.log(sleepinessMeter.value)
+    sleepEl.textContent = 'Sleepiness: ' + myPet.sleepiness
+}
 
-// function handlePlayClick() {
-//     // boredom--
-//     'Boredom: ' + boredom--
-// }
+function handlePlayClick() {
+    interval.setInterval()
+    myPet.boredom--
+    boredomMeter.value = myPet.boredom
+    playEl.textContent = 'Boredom: ' + myPet.boredom
+}
 
 const myPet = new Tamagotchi("Gato", 0, 0, 0, 0)
 console.log(myPet)
@@ -126,17 +130,17 @@ myPet.addSleepiness()
 myPet.addBoredom()
 
 // When the button is clicked, call the provided function.
-feedEl.addEventListener('click', () => {
+feedEl.addEventListener('click', handleFeedClick => {
     myPet.hunger--
     updateDisplay()
 })
 
-sleepEl.addEventListener('click', () => {
+sleepEl.addEventListener('click', handleSleepClick => {
     myPet.sleepiness--
     updateDisplay()
 })
 
-playEl.addEventListener('click', () => {
+playEl.addEventListener('click', handlePlayClick => {
     myPet.boredom--
     updateDisplay()
 })
