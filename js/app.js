@@ -34,7 +34,9 @@ let count = 0
 
 class Tamagotchi {
     constructor(name, hunger, sleepiness, boredom, age) {
-        this.interval = null
+        this.intervalHunger = null
+        this.intervalSleepiness = null
+        this.intervalBoredom = null
         this.name = name
         this.hunger = hunger
         this.sleepiness = sleepiness
@@ -43,7 +45,7 @@ class Tamagotchi {
     }
 
     addHunger = () => {
-        this.interval = setInterval(() => {
+        this.intervalHunger = setInterval(() => {
             this.hunger++
             console.log("Hunger: " + this.hunger)
             if (this.hunger >= 8) {
@@ -51,14 +53,16 @@ class Tamagotchi {
             }
             if (this.hunger == 10) {
                 notifications.textContent = "Game over - Hangry!"
-                clearInterval(this.interval)
+                clearInterval(this.intervalHunger)
+                clearInterval(this.intervalSleepiness)
+                clearInterval(this.intervalBoredom)
             }
             updateDisplay()
-        }, 10000)
+        }, 5000)
     }
 
     addSleepiness() {
-        this.interval = setInterval(() => {
+        this.intervalSleepiness = setInterval(() => {
             this.sleepiness++
             console.log("Sleepiness " + this.sleepiness)
             if (this.sleepiness >= 8) {
@@ -69,11 +73,11 @@ class Tamagotchi {
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 10000)
+        }, 5000)
     }
 
     addBoredom() {
-        this.interval = setInterval(() => {
+        this.intervalBoredom = setInterval(() => {
             this.boredom++
             console.log("Boredom: " + this.boredom)
             if (this.boredom >= 8) {
@@ -84,7 +88,7 @@ class Tamagotchi {
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 1000)
+        }, 5000)
     }
 
     addAge() {
@@ -99,9 +103,7 @@ class Tamagotchi {
 
 function handleFeedClick() {
     interval = setInterval()
-    myPet.hunger--
-    // Display the updated meter?
-    // let hungerMeterLive = hungerMeter.value 
+    myPet.hunger-- 
     hungerMeter.value = myPet.hunger
     console.log(hungerMeter.value)
     feedEl.textContent = 'Hunger: ' + myPet.hunger
