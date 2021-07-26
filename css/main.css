@@ -1,7 +1,71 @@
 body {
-    background-color: lightcyan;
+    background-color: white;
+}
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 meter {
-    width: 400px;
-    height: 55px;
+    display: flex;
+    flex-grow: 1;
 }
+#hunger-meter {
+    justify-content: center;
+    flex-direction: row;
+}
+#sleepiness-meter {
+    justify-content: center;
+    flex-direction: row;
+}
+#boredom-meter {
+    justify-content: center;
+    flex-direction: row;
+}
+
+#center {
+    align-items: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+/* #name {
+    
+}
+#age {
+
+} */
+#slothilda {
+    background-image: url("../images/slothilda/slothilda-main.gif");
+    background-size: cover;
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.btn {
+    display: flex;
+    
+}
+#btn-feed {
+    /* background: url("../images/icons/eat-icon.jpg"); */
+}
+#btn-sleep {
+    /* background: url("../images/icons/sleep-icon.jpg"); */
+
+}
+#btn-play {
+    /* background: url("../images/icons/play-icon.jpg"); */
+}
+
+

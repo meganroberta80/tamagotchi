@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,25 +9,42 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Game</title>
 </head>
+
 <body>
     <h1>Tamagotchi Pet</h1>
+    <main>
+        <section id="left">
+            <div id="Hunger">
+                <label class="hunger-meter">Hunger</label>
+                <meter id="hunger-meter" class="meter" min="0" high="70" max="100"></meter>
+            </div>
 
-    <p id="notifications">I'm feeling great!</p>
+            <div id="Sleepiness">
+                <label class="sleepiness-meter">Sleepiness</label>
+                <meter id="sleepiness-meter" class="meter" min="0" high="70" max="100"></meter>
+            </div>
 
-    <button id="btn-feed">Feed</button>
-    <button id="btn-sleep">Sleep</button>
-    <button id="btn-play">Play</button>
+            <div id="Boredom">
+                <label class="boredom-meter">Boredom</label>
+                <meter id="boredom-meter" class="meter" min="0" high="70" max="100"></meter>
+            </div>
+        </section>
 
-    <div id="age">Age:</div>
-    
+        <section id="center">
+            <div id="name">Name</div>
+            <div id="age">Age:</div>
+            <div id="notifications">I'm feeling great!</div>
+            <div id="slothilda"></div>
+        </section>
 
-    <div id="Hunger">Hunger</div>
-    <meter id="hunger-meter" min="0" high="7" max="10"></meter>
+        <section id="right">
+            <button id="btn-feed" class="btn">Feed</button>
+            <button id="btn-sleep" class="btn">Nap</button>
+            <button id="btn-play" class="btn">Play</button>
+        </section>
+    </main>
 
-    <div id="Sleepiness">Sleepiness</div>
-    <meter id="sleepiness-meter" min="0" high="7" max="10"></meter>
 
-    <div id="Boredom">Boredom</div>
-    <meter id="boredom-meter" min="0" high="7" max="10"></meter>
 </body>
+
 </html>

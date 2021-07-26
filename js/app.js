@@ -39,47 +39,47 @@ class Tamagotchi {
         this.intervalHunger = setInterval(() => {
             this.hunger++
             console.log("Hunger: " + this.hunger)
-            if (this.hunger >= 8) {
+            if (this.hunger >= 80) {
                 notifications.textContent = "I'm hungry. Feed me!"
             }
-            if (this.hunger == 10) {
+            if (this.hunger == 100) {
                 notifications.textContent = "Game over - Hangry!"
                 clearInterval(this.intervalHunger)
                 clearInterval(this.intervalSleepiness)
                 clearInterval(this.intervalBoredom)
             }
             updateDisplay()
-        }, 5000)
+        }, 3000)
     }
 
     addSleepiness() {
         this.intervalSleepiness = setInterval(() => {
             this.sleepiness++
             console.log("Sleepiness " + this.sleepiness)
-            if (this.sleepiness >= 8) {
+            if (this.sleepiness >= 80) {
                 notifications.textContent = "I'm tired. Time for a nap!"
             }
-            if (this.sleepiness == 10) {
+            if (this.sleepiness == 100) {
                 notifications.textContent = "Game over - Fainted!"
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 5000)
+        }, 1000)
     }
 
     addBoredom() {
         this.intervalBoredom = setInterval(() => {
             this.boredom++
             console.log("Boredom: " + this.boredom)
-            if (this.boredom >= 8) {
+            if (this.boredom >= 80) {
                 notifications.textContent = "I'm bored. Let's play a game!"
             }
-            if (this.boredom == 10) {
+            if (this.boredom == 100) {
                 notifications.textContent = "Game over - Bored!"
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 5000)
+        }, 2000)
     }
 
     addAge() {
