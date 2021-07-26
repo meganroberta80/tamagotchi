@@ -1,10 +1,19 @@
-// Create a repo for your tamagotchi pet
-// Create a Class (JS Class, look at your notes if your forget) for your tamagotchi
-// Instantiate your Tamagotchi
-// Display a character of your choice on the screen to represent your pet
-// Age
-// Add the ability to name your pet.
-// Style the page.
+// document.getElementById('signup-page').style.display = "block"
+let signupPage = document.getElementById('signup-page')
+
+// document.getElementById('game-page').style.display = "none"
+let gamePage = document.getElementById('game-page')
+
+let startEl = document.getElementById('btn-start')
+let nameChoice = document.getElementById('name-choice')
+let petName = document.getElementById("name")
+
+function startGame() {
+    signupPage.classList.add('hide')
+    gamePage.classList.remove('hide')
+    petName.innerHTML = 'Name: ' + nameChoice.value
+    console.log("Button click!")
+}
 
 // hunger
 let hungerMeter = document.getElementById('hunger-meter')
@@ -94,7 +103,7 @@ class Tamagotchi {
 
 function handleFeedClick() {
     interval = setInterval()
-    myPet.hunger-- 
+    myPet.hunger--
     hungerMeter.value = myPet.hunger
     console.log(hungerMeter.value)
     feedEl.textContent = 'Hunger: ' + myPet.hunger
@@ -123,6 +132,8 @@ myPet.addSleepiness()
 myPet.addBoredom()
 
 // When the button is clicked, call the provided function.
+startEl.addEventListener('click', startGame)
+
 feedEl.addEventListener('click', handleFeedClick => {
     myPet.hunger--
     updateDisplay()
@@ -143,3 +154,11 @@ function updateDisplay() {
     sleepinessMeter.setAttribute("value", myPet.sleepiness)
     boredomMeter.setAttribute("value", myPet.boredom)
 }
+
+// Create a repo for your tamagotchi pet
+// Create a Class (JS Class, look at your notes if your forget) for your tamagotchi
+// Instantiate your Tamagotchi
+// Display a character of your choice on the screen to represent your pet
+// Age
+// Add the ability to name your pet.
+// Style the page.
