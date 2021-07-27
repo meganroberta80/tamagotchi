@@ -1,5 +1,7 @@
 body {
-    background-color: white;
+    background-color: paleturquoise;
+    background-size: auto;
+    text-align: center;
 }
 main {
     display: flex;
@@ -47,8 +49,8 @@ meter {
     background-image: url("../images/slothilda/slothilda-main.gif");
     background-size: cover;
     border: 1px solid black;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
 }
 
 #right {

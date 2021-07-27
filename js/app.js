@@ -6,9 +6,7 @@ let startEl = document.getElementById('btn-start')
 function startGame() {
     signupPage.classList.add('hide')
     gamePage.classList.remove('hide')
-    // petName.innerHTML = 'Name: ' + nameChoice.value
     let name = document.getElementById("slothName").value
-    console.log(name)
     let welcome = "Hello, " + name
     document.getElementById("pet-name").innerHTML = welcome
 }
@@ -25,6 +23,11 @@ let sleepEl = document.getElementById('btn-sleep')
 let boredomMeter = document.getElementById('boredom-meter')
 let playEl = document.getElementById('btn-play')
 
+// age??
+// let ageUpdate = document.getElementById('age')
+// let growing = "Age: " + ageUpdate
+// document.getElementById("age") = growing
+
 // notifications
 let notifications = document.getElementById('notifications')
 
@@ -35,6 +38,7 @@ class Tamagotchi {
         this.intervalHunger = null
         this.intervalSleepiness = null
         this.intervalBoredom = null
+        this.intervalAge = null
         this.name = name
         this.hunger = hunger
         this.sleepiness = sleepiness
@@ -42,7 +46,7 @@ class Tamagotchi {
         this.age = age
     }
 
-    addHunger = () => {
+    addHunger() {
         this.intervalHunger = setInterval(() => {
             this.hunger++
             console.log("Hunger: " + this.hunger)
@@ -90,12 +94,15 @@ class Tamagotchi {
     }
 
     addAge() {
-        let newAge = this.age
-        setInterval(function () {
-            newAge++
-            console.log("Age: " + myPet.age)
-        }, 300000)
-        // 5 minutes is 300000 ms
+        this.intervalAge = setInterval(() => {
+                this.age++
+                console.log("Age: " + myPet.age)
+                if (this.age >= 10) {
+                    notifications.textContent = "Game over - Your sloth has grown old and lived a happy life."
+                    clearInterval(this.interval)
+                }
+                updateDisplay()
+            }, 10000)
     }
 }
 
