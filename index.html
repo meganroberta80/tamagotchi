@@ -12,36 +12,32 @@
 
 <body>
     <main id="signup-page">
-        <h1>Signup</h1>
         <div id="name">
-            <label>Choose your sloth's name!</label>
-            <!-- Connect to 2nd main. -->
-            <input type="text" id="name-choice">
+            What's your sloth's name?<input type="text" id="slothName" name="fname">
             <button id="btn-start">Start Game</button>
         </div>
     </main>
 
     <main id="game-page" class="hide">
-        <h1>Tamagotchi Pet</h1>
         <section id="left">
             <div id="Hunger">
                 <label class="hunger-meter">Hunger</label>
-                <meter id="hunger-meter" class="meter" min="0" high="70" max="100"></meter>
+                <meter id="hunger-meter" class="meter" min="0" high="7" max="10"></meter>
             </div>
 
             <div id="Sleepiness">
                 <label class="sleepiness-meter">Sleepiness</label>
-                <meter id="sleepiness-meter" class="meter" min="0" high="70" max="100"></meter>
+                <meter id="sleepiness-meter" class="meter" min="0" high="7" max="10"></meter>
             </div>
 
             <div id="Boredom">
                 <label class="boredom-meter">Boredom</label>
-                <meter id="boredom-meter" class="meter" min="0" high="70" max="100"></meter>
+                <meter id="boredom-meter" class="meter" min="0" high="7" max="10"></meter>
             </div>
         </section>
 
         <section id="center">
-            <div id="name">Name:</div>
+            <div id="pet-name"></div>
             <div id="age">Age:</div>
             <div id="notifications">I'm feeling great!</div>
             <div id="slothilda"></div>

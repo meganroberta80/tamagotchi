@@ -1,18 +1,16 @@
-// document.getElementById('signup-page').style.display = "block"
 let signupPage = document.getElementById('signup-page')
-
-// document.getElementById('game-page').style.display = "none"
 let gamePage = document.getElementById('game-page')
 
 let startEl = document.getElementById('btn-start')
-let nameChoice = document.getElementById('name-choice')
-let petName = document.getElementById("name")
 
 function startGame() {
     signupPage.classList.add('hide')
     gamePage.classList.remove('hide')
-    petName.innerHTML = 'Name: ' + nameChoice.value
-    console.log("Button click!")
+    // petName.innerHTML = 'Name: ' + nameChoice.value
+    let name = document.getElementById("slothName").value
+    console.log(name)
+    let welcome = "Hello, " + name
+    document.getElementById("pet-name").innerHTML = welcome
 }
 
 // hunger
@@ -48,10 +46,10 @@ class Tamagotchi {
         this.intervalHunger = setInterval(() => {
             this.hunger++
             console.log("Hunger: " + this.hunger)
-            if (this.hunger >= 80) {
+            if (this.hunger >= 5) {
                 notifications.textContent = "I'm hungry. Feed me!"
             }
-            if (this.hunger == 100) {
+            if (this.hunger == 10) {
                 notifications.textContent = "Game over - Hangry!"
                 clearInterval(this.intervalHunger)
                 clearInterval(this.intervalSleepiness)
@@ -65,30 +63,30 @@ class Tamagotchi {
         this.intervalSleepiness = setInterval(() => {
             this.sleepiness++
             console.log("Sleepiness " + this.sleepiness)
-            if (this.sleepiness >= 80) {
+            if (this.sleepiness >= 7) {
                 notifications.textContent = "I'm tired. Time for a nap!"
             }
-            if (this.sleepiness == 100) {
+            if (this.sleepiness == 10) {
                 notifications.textContent = "Game over - Fainted!"
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 1000)
+        }, 3000)
     }
 
     addBoredom() {
         this.intervalBoredom = setInterval(() => {
             this.boredom++
             console.log("Boredom: " + this.boredom)
-            if (this.boredom >= 80) {
+            if (this.boredom >= 7) {
                 notifications.textContent = "I'm bored. Let's play a game!"
             }
-            if (this.boredom == 100) {
+            if (this.boredom == 10) {
                 notifications.textContent = "Game over - Bored!"
                 clearInterval(this.interval)
             }
             updateDisplay()
-        }, 2000)
+        }, 5000)
     }
 
     addAge() {
@@ -133,6 +131,7 @@ myPet.addBoredom()
 
 // When the button is clicked, call the provided function.
 startEl.addEventListener('click', startGame)
+
 
 feedEl.addEventListener('click', handleFeedClick => {
     myPet.hunger--
